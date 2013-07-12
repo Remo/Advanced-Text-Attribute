@@ -1,7 +1,16 @@
 <?php
 $fh = Loader::helper('form'); /* @var $fh FormHelper */
 ?>
-<?php echo $fh->text($fieldName, $value, array('class' => 'span3')) ?>
+<?php
+switch ($textConfig['valControl']) {
+	case LertecoTextAttributeTypeController::CONTROL_TEXT:
+		echo $fh->text($fieldName, $value, array('class' => 'span3'));
+		break;
+	case LertecoTextAttributeTypeController::CONTROL_TEXTAREA:
+		echo $fh->textarea($fieldName, $value);
+		break;
+}
+?>
 
 <?php if ($mustVal) {
 	$field = str_replace(array('[', ']'), array('\\\\[', '\\\\]'), $fieldName);

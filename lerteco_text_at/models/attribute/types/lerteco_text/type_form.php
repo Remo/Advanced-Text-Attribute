@@ -5,7 +5,13 @@ $fh = Loader::helper('form'); /* @var $fh FormHelper */
 
 <fieldset>
 	<legend><?php echo t('Validation')?></legend>
-
+	
+	<div class="clearfix control-group">
+		<label class="control-label"><?php echo t('Input Control')?></label>
+		<div class="input controls">
+			<?php echo $fh->select('valControl', $controlOptions, $textConfig['valControl']); ?>
+		</div>
+	</div>
 	<div class="clearfix control-group">
 		<label class="control-label"><?php echo t('Input Type')?></label>
 		<div class="input controls">

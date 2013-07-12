@@ -6,6 +6,7 @@
 		<UNSIGNED/>
 	</field>
 
+	<field name="valControl" type="I" size="3" />
 	<field name="valType" type="I" size="3" />
 	<field name="valRegExp" type="C" size="300" />
 	<field name="valReq" type="L" />

@@ -12,13 +12,20 @@ class LertecoTextAttributeTypeController extends DefaultAttributeTypeController 
 	const TYPE_EMAIL = 1;
 	const TYPE_URL = 2;
 	const TYPE_CC = 3;
+	
+	const CONTROL_TEXT = 1;
+	const CONTROL_TEXTAREA = 2;
 
-
-	public $typeOptions = array(self::TYPE_FREE => 'No type validation',
-								self::TYPE_EMAIL => 'Email Address',
-								self::TYPE_URL => 'Web Address',
-								self::TYPE_REGEXP => 'Use Regular Expression'
-								);
+	public $typeOptions = array(
+		self::TYPE_FREE => 'No type validation',
+		self::TYPE_EMAIL => 'Email Address',
+		self::TYPE_URL => 'Web Address',
+		self::TYPE_REGEXP => 'Use Regular Expression'
+		);
+	public $controlOptions = array(
+		self::CONTROL_TEXT => 'Text Field',
+		self::CONTROL_TEXTAREA => 'Multiline Textarea',
+		);
 
 	protected $searchIndexFieldDefinition = 'X NULL';
 
@@ -31,6 +38,7 @@ class LertecoTextAttributeTypeController extends DefaultAttributeTypeController 
 	public function type_form() {
 		$this->set('textConfig', $this->getConfig());
 		$this->set('typeOptions', $this->typeOptions);
+		$this->set('controlOptions', $this->controlOptions);
 	}
 
 	/**
@@ -40,7 +48,7 @@ class LertecoTextAttributeTypeController extends DefaultAttributeTypeController 
 	public function saveKey($data) {
 		$db = Loader::db();
 
-		$whitelist = array('valType', 'valRegExp', 'valReq', 'formatType');
+		$whitelist = array('valType', 'valRegExp', 'valReq', 'formatType', 'valControl');
 		// sets checkbox defaults correctly
 		$dbupdate = array('valReq' => 0, 'formatType' => 0);
 
