@@ -1,0 +1,52 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: advanced text attribute\n"
+"POT-Creation-Date: 2013-07-12 20:51+0100\n"
+"PO-Revision-Date: 2013-07-12 21:00+0100\n"
+"Last-Translator: \n"
+"Language-Team:  <remo.laubacher@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;t\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: C:\\meschgit\\work\\concrete5612\\packages"
+"\\lerteco_text_at\n"
+
+#: C:\meschgit\work\concrete5612\packages\lerteco_text_at/controller.php:13
+msgid "An advanced text attribute."
+msgstr "erweitertes Text Attribut."
+
+#: C:\meschgit\work\concrete5612\packages\lerteco_text_at/controller.php:17
+msgid "Lerteco Advanced Text Attribute"
+msgstr ""
+
+#: C:\meschgit\work\concrete5612\packages\lerteco_text_at/controller.php:42
+msgid "Advanced Text (Lerteco)"
+msgstr ""
+
+#: C:\meschgit\work\concrete5612\packages\lerteco_text_at/models/attribute/types/lerteco_text/type_form.php:7
+msgid "Validation"
+msgstr "Validierung"
+
+#: C:\meschgit\work\concrete5612\packages\lerteco_text_at/models/attribute/types/lerteco_text/type_form.php:10
+msgid "Input Type"
+msgstr "Eingabetyp"
+
+#: C:\meschgit\work\concrete5612\packages\lerteco_text_at/models/attribute/types/lerteco_text/type_form.php:16
+msgid "Regular Expression"
+msgstr "Regulärer Ausdruck"
+
+#: C:\meschgit\work\concrete5612\packages\lerteco_text_at/models/attribute/types/lerteco_text/type_form.php:22
+msgid "Required"
+msgstr "Erforderlich"
+
+#: C:\meschgit\work\concrete5612\packages\lerteco_text_at/models/attribute/types/lerteco_text/type_form.php:29
+msgid "Display"
+msgstr "Ausgabe"
+
+#: C:\meschgit\work\concrete5612\packages\lerteco_text_at/models/attribute/types/lerteco_text/type_form.php:32
+msgid "Format As Type"
+msgstr "Typen spezifische Formatierung"
