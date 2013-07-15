@@ -16,19 +16,7 @@ class LertecoTextAttributeTypeController extends DefaultAttributeTypeController 
 	const CONTROL_TEXT = 1;
 	const CONTROL_TEXTAREA = 2;
 
-	public $typeOptions = array(
-		self::TYPE_FREE => 'No type validation',
-		self::TYPE_EMAIL => 'Email Address',
-		self::TYPE_URL => 'Web Address',
-		self::TYPE_REGEXP => 'Use Regular Expression'
-		);
-	public $controlOptions = array(
-		self::CONTROL_TEXT => 'Text Field',
-		self::CONTROL_TEXTAREA => 'Multiline Textarea',
-		);
-
 	protected $searchIndexFieldDefinition = 'X NULL';
-
 
 
 	// *********** type setup (type form)
@@ -36,9 +24,21 @@ class LertecoTextAttributeTypeController extends DefaultAttributeTypeController 
 	 * Run before the type form (ie, the piece of the page shown when setting up or configuring an instance of an attribute type)
 	 */
 	public function type_form() {
-		$this->set('textConfig', $this->getConfig());
-		$this->set('typeOptions', $this->typeOptions);
-		$this->set('controlOptions', $this->controlOptions);
+            $typeOptions = array(
+		self::TYPE_FREE => t('No type validation'),
+		self::TYPE_EMAIL => t('Email Address'),
+		self::TYPE_URL => t('Web Address'),
+		self::TYPE_REGEXP => t('Use Regular Expression')
+            );
+            
+            $controlOptions = array(
+		self::CONTROL_TEXT => t('Text Field'),
+		self::CONTROL_TEXTAREA => t('Multiline Textarea'),
+            );
+            
+            $this->set('typeOptions', $typeOptions);
+            $this->set('controlOptions', $controlOptions);
+            $this->set('textConfig', $this->getConfig());
 	}
 
 	/**
@@ -48,9 +48,9 @@ class LertecoTextAttributeTypeController extends DefaultAttributeTypeController 
 	public function saveKey($data) {
 		$db = Loader::db();
 
-		$whitelist = array('valType', 'valRegExp', 'valReq', 'formatType', 'valControl');
+		$whitelist = array('valType', 'valRegExp', 'valReq', 'formatType', 'valControl', 'valInputLength', 'valMaxInputLength');
 		// sets checkbox defaults correctly
-		$dbupdate = array('valReq' => 0, 'formatType' => 0);
+		$dbupdate = array('valReq' => 0, 'formatType' => 0, 'valInputLength' => 0);
 
 		foreach ($whitelist as $colname) {
 			if (isset ($data[$colname])) {
@@ -79,6 +79,10 @@ class LertecoTextAttributeTypeController extends DefaultAttributeTypeController 
 			$this->addHeaderItem($hh->javascript('jquery.validate.min.js', 'lerteco_text_at'));
 			$this->addHeaderItem($hh->javascript('jquery.validate.config.js', 'lerteco_text_at'));
 			$mustValidate = true;
+		}
+                
+		if ($textConfig['valInputLength']) {
+			$this->addHeaderItem($hh->javascript('jquery.lengthcheck.js', 'lerteco_text_at'));
 		}
 
 		$this->set('textConfig', $textConfig);

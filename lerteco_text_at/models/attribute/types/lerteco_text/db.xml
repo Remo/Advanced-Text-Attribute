@@ -12,6 +12,8 @@
 	<field name="valReq" type="L" />
 	<field name="valMinLen" type="I" size="3" />
 	<field name="valMaxLen" type="I" size="3" />
+	<field name="valInputLength" type="I" size="3" />
+	<field name="valMaxInputLength" type="I" size="3" />
 	<field name="formatType" type="L" />
 </table>
 </schema>

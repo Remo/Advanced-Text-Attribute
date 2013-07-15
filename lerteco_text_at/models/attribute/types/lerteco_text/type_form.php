@@ -30,6 +30,15 @@ $fh = Loader::helper('form'); /* @var $fh FormHelper */
 			<?php echo $fh->checkbox('valReq', '1', $textConfig['valReq']); ?>
 		</div>
 	</div>
+	<div id="control-regexp" class="clearfix control-group">
+		<label class="control-label"><?php echo t('Maximum Input Length')?></label>
+		<div class="input controls">
+			<?php echo $fh->text('valMaxInputLength', $textConfig['valMaxInputLength']); ?>
+			<br/>
+			<?php echo $fh->checkbox('valInputLength', '1', $textConfig['valInputLength']); ?>
+			<?php echo t('Display character count') ?>
+		</div>
+	</div>        
 </fieldset>
 <fieldset id="set-display">
 	<legend><?php echo t('Display')?></legend>

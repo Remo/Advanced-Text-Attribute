@@ -1,20 +1,40 @@
 <?php
 $fh = Loader::helper('form'); /* @var $fh FormHelper */
-?>
-<?php
+
+$field = str_replace(array('[', ']'), array('\\\\[', '\\\\]'), $fieldName);
+$attributes = array();
+if ($textConfig['valMaxInputLength'] > 0) {
+    $attributes['maxlength'] = $textConfig['valMaxInputLength'];
+}
+
 switch ($textConfig['valControl']) {
 	case LertecoTextAttributeTypeController::CONTROL_TEXT:
-		echo $fh->text($fieldName, $value, array('class' => 'span3'));
+                $attributes['class'] = 'span3';
+		echo $fh->text($fieldName, $value, $attributes);
 		break;
 	case LertecoTextAttributeTypeController::CONTROL_TEXTAREA:
-		echo $fh->textarea($fieldName, $value);
+		echo $fh->textarea($fieldName, $value, $attributes);
 		break;
 }
 ?>
 
+<?php if ($textConfig['valInputLength'] == 1) { ?>
+<div>
+    <span id="lerteco_text_at_chars_<?php echo $fieldName?>"></span>
+    <?php echo t('characters left') ?>
+</div>
+<script type="text/javascript">
+$(function() {
+            $elem = $("#lerteco_text_at_chars_<?php echo $field?>");
+            $("#<?php echo $field?>").inputLengthRestrictor(<?php echo $textConfig['valMaxInputLength']?>, $elem);
+});
+</script>
+<?php } ?>
+
 <?php if ($mustVal) {
-	$field = str_replace(array('[', ']'), array('\\\\[', '\\\\]'), $fieldName);
+	
 ?>
+
 	<script type="text/javascript">
 		$(function() {
 			// attach jquery validation to the form
@@ -38,7 +58,7 @@ switch ($textConfig['valControl']) {
 				$('#<?php echo $field ?>').rules('add', { url: true });
 			<?php } else if ($textConfig['valType'] == LertecoTextAttributeTypeController::TYPE_REGEXP && $textConfig['valRegExp']) { ?>
 				$('#<?php echo $field ?>').rules('add', { regex: '<?php echo str_replace('\\', '\\\\', $textConfig['valRegExp']) ?>'});
-			<?php } ?>
+			<?php } ?>                           
 		});
 	</script>
 <?php } ?>

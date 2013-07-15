@@ -7,7 +7,7 @@ class LertecoTextAtPackage extends Package {
 
 	protected $pkgHandle = 'lerteco_text_at';
 	protected $appVersionRequired = '5.5.1';
-	protected $pkgVersion = '1.0.0';
+	protected $pkgVersion = '1.0.1';
 	
 	public function getPackageDescription() { 
 		return t('An advanced text attribute.');
@@ -40,8 +40,7 @@ class LertecoTextAtPackage extends Package {
 		$at = AttributeType::getByHandle('lerteco_text');
 		if(! is_object($at) || ! intval($at->getAttributeTypeID()) ) {
 			$at = AttributeType::add('lerteco_text', t('Advanced Text (Lerteco)'), $pkg);
-		} 
-
+		}
 
 		$colAttrCat = AttributeKeyCategory::getByHandle('collection');
 		$attrKeyTypeExists = $db->getOne('SELECT count(*) FROM AttributeTypeCategories WHERE atID=? AND akCategoryID=?',
